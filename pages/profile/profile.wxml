@@ -1,0 +1,44 @@
+<!--pages/profile/profile.wxml-->
+<view class="weui-progress">
+  <view class="weui-progress__bar">
+    <progress percent="80" stroke-width="3" />
+  </view>
+</view>
+<view class="userinfo">
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <block wx:else>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </block>
+</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd">打开家人提醒</view>
+    <view class="weui-cell__ft">
+      <switch checked bindchange="openFamily" />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__bd">附近车辆监控</view>
+    <view class="weui-cell__ft">
+      <switch checked bindchange="openNearbyCar" />
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item ">
+        <button class="weui-btn" bindtap="sendUP" type="default">上</button>
+      </view>
+      <view class="flex-item ">
+        <button class="weui-btn" bindtap="sendDown" type="default">下</button>
+      </view>
+      <view class="flex-item ">
+        <button class="weui-btn" bindtap="sendLeft" type="default">左</button>
+      </view>
+      <view class="flex-item ">
+        <button class="weui-btn" bindtap="sendRight" type="default">右</button>
+      </view>
+    </view>
+  </view>
+</view>
+<button class="weui-btn" type="primary">自动调节后视镜</button>
